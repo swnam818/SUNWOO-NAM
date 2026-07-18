@@ -1,193 +1,437 @@
-<!DOCTYPE html>
+            <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunwoo Nam | Kyung Hee Univ. Med</title>
-    <!-- 폰트 불러오기 -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- 아이콘 불러오기 -->
+    <title>SunWoo's Neuroscience LAB</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 디자인(CSS) 설정 */
+        /* CSS Variables based on Kyung Hee University Red (#9E1B32) and Gold (#C8A058) */
         :root {
-            --primary-color: #2c3e50; 
-            --accent-color: #3498db; 
-            --bg-color: #f4f6f9; 
-            --text-color: #333333;
+            --khu-red: #9E1B32;
+            --khu-red-light: #b73248;
+            --khu-gold: #C8A058;
+            --khu-gold-light: #e6c587;
+            --bg-color: #fcf9f9; 
+            --text-main: #2d3436;
+            --text-muted: #636e72;
             --card-bg: #ffffff;
+            --border-color: #f1e4e6;
         }
         
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            margin: 0;
-            padding: 0;
+            color: var(--text-main);
+            line-height: 1.6;
             display: flex;
             justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Top Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
+            padding: 1rem 2rem;
         }
 
-        .container {
-            max-width: 800px;
-            width: 90%;
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin: 2rem 0;
-        }
-
-        header {
-            margin-bottom: 2.5rem;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 1.5rem;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin: 0 0 0.5rem 0;
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--khu-red);
+            text-decoration: none;
         }
 
-        .subtitle {
-            color: #666;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--khu-red);
+        }
+
+        /* Main Container Layout */
+        .layout-container {
+            max-width: 900px;
+            width: 100%;
+            margin-top: 5rem; /* Space for fixed nav */
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        /* Left Sidebar (Profile) */
+        .sidebar {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(158, 27, 50, 0.08);
+            border-top: 4px solid var(--khu-red);
+            height: fit-content;
+            text-align: center;
+            position: sticky;
+            top: 6rem; /* Sticky offset from top */
+        }
+
+        .university-logo {
+            width: 120px;
+            height: auto;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+        }
+
+        .profile-name {
+            font-family: 'Playfair Display', serif;
+            color: var(--khu-red);
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-title {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 1.5rem 0;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            text-align: left;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .contact-item i {
+            width: 24px;
+            color: var(--khu-red);
+            margin-right: 10px;
+            text-align: center;
             font-size: 1.1rem;
-            margin: 0;
-            font-weight: 400;
+        }
+
+        .contact-item:hover {
+            background-color: #fff5f6;
+            color: var(--khu-red);
+            transform: translateX(5px);
+        }
+
+        /* Right Content Area */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Content Sections */
+        .section-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-header i {
+            color: var(--khu-gold);
+            font-size: 1.5rem;
+            margin-right: 12px;
         }
 
         .section-title {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--khu-red);
+            font-size: 1.6rem;
             font-weight: 700;
         }
 
-        .about-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .about-section p {
+        .about-text {
+            color: var(--text-main);
             font-size: 1.05rem;
-            color: #444;
             margin-bottom: 1rem;
+            line-height: 1.8;
         }
 
-        .interests-tags {
+        /* Tags */
+        .tags-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 2.5rem;
+            gap: 10px;
         }
 
         .tag {
-            background-color: #e8f4f8;
-            color: var(--accent-color);
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 0.95rem;
+            background-color: #fff5f6;
+            color: var(--khu-red);
+            border: 1px solid rgba(158, 27, 50, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .tag:hover {
-            background-color: var(--accent-color);
+            background-color: var(--khu-red);
             color: white;
-            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(158, 27, 50, 0.3);
         }
 
-        .links-section {
+        /* Blog/Posts Section */
+        .post-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 1.5rem;
         }
 
-        .link-item {
-            display: flex;
-            align-items: center;
+        .post-item {
+            display: block;
             text-decoration: none;
-            color: #555;
-            font-size: 1.05rem;
-            transition: color 0.3s ease;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .link-item i {
-            width: 30px;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-right: 10px;
-            text-align: center;
+        .post-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--khu-gold);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
         }
 
-        .link-item:hover {
-            color: var(--accent-color);
-            background-color: #f0f7fb;
+        .post-item:hover {
+            background-color: #fafafa;
+            border-color: var(--khu-gold-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        .link-item:hover i {
-            color: var(--accent-color);
+        .post-item:hover::before {
+            transform: scaleY(1);
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 2rem;
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--khu-red-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .post-title {
+            color: var(--text-main);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-preview {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .layout-container {
+                grid-template-columns: 1fr;
+                margin-top: 4rem;
             }
-            h1 {
-                font-size: 1.8rem;
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 1rem;
+            }
+
+            .nav-links {
+                display: none; /* Hide nav links on mobile for simplicity, or implement a hamburger menu */
+            }
+            
+            .section-card {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 상단 헤더 -->
-        <header>
-            <h1>Sunwoo Nam</h1>
-            <p class="subtitle">Undergraduate Student, Kyung Hee University College of Medicine</p>
-        </header>
 
-        <!-- 1. 자기소개 섹션 -->
-        <div class="about-section">
-            <h2 class="section-title">About Me</h2>
-            <p>Hello! I am currently an undergraduate student at Kyung Hee University College of Medicine.</p>
-            <p>My academic journey centers around neuroscience, where I explore a broad spectrum of disciplines including genomic analysis, computational neuroscience, and systems biology. I am particularly fascinated by the genomic analysis of neurons.</p>
-            <p>I am always open to connecting with individuals who share similar research interests. If you would like to collaborate or just have a chat, please feel free to reach out to me anytime.</p>
-        </div>
-
-        <!-- 2. 관심분야 섹션 -->
-        <div class="interests-section">
-            <h2 class="section-title">Research Interests</h2>
-            <div class="interests-tags">
-                <span class="tag">Computational Neuroscience</span>
-                <span class="tag">Neurogenetics</span>
-                <span class="tag">Bioinformatics</span>
-                <span class="tag">Neurodevelopment</span>
-                <span class="tag">Multi-omics</span>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">SunWoo's Neuroscience LAB</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#posts">Posts</a>
             </div>
         </div>
+    </nav>
 
-        <!-- 3. 관련 링크 섹션 -->
-        <div class="links-section">
-            <h2 class="section-title">Contact & Links</h2>
-            <a href="mailto:sunwoodotnam@gmail.com" class="link-item">
-                <i class="fa-regular fa-envelope"></i> sunwoodotnam@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/in/sunwoo-nam317" target="_blank" rel="noopener noreferrer" class="link-item">
-                <i class="fa-brands fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://velog.io/@swnam818/posts" target="_blank" rel="noopener noreferrer" class="link-item">
-                <i class="fa-solid fa-pen-nib"></i> Velog
-            </a>
-        </div>
+    <!-- Main Layout -->
+    <div class="layout-container">
+        
+        <!-- Left Sidebar: Profile -->
+        <aside class="sidebar">
+            <!-- Using the user's uploaded Kyung Hee University logo -->
+            <img src="1000071252.png" alt="Kyung Hee University Logo" class="university-logo">
+            
+            <h1 class="profile-name">Sunwoo Nam</h1>
+            <p class="profile-title">Undergraduate Student<br>Kyung Hee University College of Medicine</p>
+            
+            <div class="sidebar-divider"></div>
+            
+            <div class="contact-links">
+                <a href="mailto:sunwoodotnam@gmail.com" class="contact-item">
+                    <i class="fa-regular fa-envelope"></i> sunwoodotnam@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/sunwoo-nam317" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://velog.io/@swnam818/posts" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <i class="fa-solid fa-pen-nib"></i> Velog Blog
+                </a>
+            </div>
+        </aside>
+
+        <!-- Right Area: Content -->
+        <main class="main-content">
+            
+            <!-- About Section -->
+            <section id="about" class="section-card">
+                <div class="section-header">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                <p class="about-text">
+                    Hello! I am currently an undergraduate student at Kyung Hee University College of Medicine.
+                </p>
+                <p class="about-text">
+                    My academic journey centers around neuroscience, where I explore a broad spectrum of disciplines including genomic analysis, computational neuroscience, and systems biology. I am particularly fascinated by the genomic analysis of neurons.
+                </p>
+                <p class="about-text">
+                    I am always open to connecting with individuals who share similar research interests. If you would like to collaborate or just have a chat, please feel free to reach out to me anytime.
+                </p>
+            </section>
+
+            <!-- Research Interests Section -->
+            <section id="research" class="section-card">
+                <div class="section-header">
+                    <i class="fa-solid fa-dna"></i>
+                    <h2 class="section-title">Research Interests</h2>
+                </div>
+                <div class="tags-container">
+                    <span class="tag">Computational Neuroscience</span>
+                    <span class="tag">Neurogenetics</span>
+                    <span class="tag">Bioinformatics</span>
+                    <span class="tag">Neurodevelopment</span>
+                    <span class="tag">Multi-omics</span>
+                </div>
+            </section>
+
+            <!-- Blog/Posts Section -->
+            <section id="posts" class="section-card">
+                <div class="section-header">
+                    <i class="fa-solid fa-book-open"></i>
+                    <h2 class="section-title">Recent Posts & Notes</h2>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    * You can add your research notes, paper reviews, or thoughts here later by duplicating the post items below.
+                </p>
+                
+                <div class="post-list">
+                    <!-- Example Post 1 -->
+                    <a href="#" class="post-item">
+                        <span class="post-date">July 18, 2026</span>
+                        <h3 class="post-title">Understanding Neural Network Dynamics in Early Development</h3>
+                        <p class="post-preview">A brief review of recent findings in how neuronal networks form and stabilize during the early stages of development, focusing on gene expression patterns.</p>
+                    </a>
+
+                    <!-- Example Post 2 -->
+                    <a href="#" class="post-item">
+                        <span class="post-date">June 05, 2026</span>
+                        <h3 class="post-title">Introduction to Multi-omics Analysis in Neuroscience</h3>
+                        <p class="post-preview">Exploring how integrating genomics, transcriptomics, and proteomics can provide a more comprehensive understanding of complex neurological disorders.</p>
+                    </a>
+                </div>
+            </section>
+
+        </main>
     </div>
+
 </body>
 </html>
+
