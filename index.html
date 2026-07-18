@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>남선우 | Sunwoo Nam</title>
-    <!-- 깔끔한 한글 폰트(Noto Sans KR) 불러오기 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- 아이콘(이메일, 링크드인 등) 불러오기 -->
+    <title>Sunwoo Nam | Kyung Hee Univ. Med</title>
+    <!-- 폰트 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 아이콘 불러오기 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* 디자인(CSS) 설정 */
         :root {
-            --primary-color: #2c3e50; /* 진한 남색 (신뢰감을 주는 색상) */
-            --accent-color: #3498db; /* 밝은 파란색 (포인트 색상) */
-            --bg-color: #f4f6f9; /* 배경색 */
+            --primary-color: #2c3e50; 
+            --accent-color: #3498db; 
+            --bg-color: #f4f6f9; 
             --text-color: #333333;
             --card-bg: #ffffff;
         }
         
         body {
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.7;
@@ -38,7 +38,7 @@
             background: var(--card-bg);
             padding: 3rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* 부드러운 그림자 효과 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             margin: 2rem 0;
         }
 
@@ -77,7 +77,6 @@
             font-size: 1.05rem;
             color: #444;
             margin-bottom: 1rem;
-            word-break: keep-all; /* 한글 줄바꿈 최적화 */
         }
 
         .interests-tags {
@@ -97,7 +96,6 @@
             transition: all 0.3s ease;
         }
 
-        /* 태그에 마우스를 올렸을 때의 효과 */
         .tag:hover {
             background-color: var(--accent-color);
             color: white;
@@ -139,7 +137,6 @@
             color: var(--accent-color);
         }
 
-        /* 모바일 화면(작은 화면)을 위한 설정 */
         @media (max-width: 600px) {
             .container {
                 padding: 2rem;
@@ -152,29 +149,29 @@
 </head>
 <body>
     <div class="container">
-        <!-- 상단 헤더: 이름과 소속 -->
+        <!-- 상단 헤더 -->
         <header>
-            <h1>남선우</h1>
-            <p class="subtitle">경희대학교 의과대학 학부생</p>
+            <h1>Sunwoo Nam</h1>
+            <p class="subtitle">Undergraduate Student, Kyung Hee University College of Medicine</p>
         </header>
 
         <!-- 1. 자기소개 섹션 -->
         <div class="about-section">
-            <h2 class="section-title">자기소개</h2>
-            <p>안녕하세요. 저는 현재 경희대학교 의과대학에 재학중인 학부생입니다.</p>
-            <p>저는 신경과학을 중심으로 유전체분석, 계산신경과학, 시스템 생물학 등을 폭넓게 탐색하고 있습니다. 특히 신경세포의 유전체 분석에 깊은 관심을 느끼고 있습니다.</p>
-            <p>저와 비슷한 관심분야를 가진 분들의 만남은 언제나 환영입니다. 저와의 교류를 희망하시는 분은 언제든지 제게 연락을 주시면 감사하겠습니다.</p>
+            <h2 class="section-title">About Me</h2>
+            <p>Hello! I am currently an undergraduate student at Kyung Hee University College of Medicine.</p>
+            <p>My academic journey centers around neuroscience, where I explore a broad spectrum of disciplines including genomic analysis, computational neuroscience, and systems biology. I am particularly fascinated by the genomic analysis of neurons.</p>
+            <p>I am always open to connecting with individuals who share similar research interests. If you would like to collaborate or just have a chat, please feel free to reach out to me anytime.</p>
         </div>
 
         <!-- 2. 관심분야 섹션 -->
         <div class="interests-section">
-            <h2 class="section-title">관심 분야</h2>
+            <h2 class="section-title">Research Interests</h2>
             <div class="interests-tags">
-                <span class="tag">계산신경과학</span>
-                <span class="tag">신경유전학</span>
-                <span class="tag">생물정보학</span>
-                <span class="tag">신경발달</span>
-                <span class="tag">멀티오믹스</span>
+                <span class="tag">Computational Neuroscience</span>
+                <span class="tag">Neurogenetics</span>
+                <span class="tag">Bioinformatics</span>
+                <span class="tag">Neurodevelopment</span>
+                <span class="tag">Multi-omics</span>
             </div>
         </div>
 
